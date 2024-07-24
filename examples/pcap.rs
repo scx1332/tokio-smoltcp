@@ -105,6 +105,10 @@ fn get_by_device(device: Device) -> Result<impl AsyncDevice> {
 }
 
 async fn async_main(opt: Opt) -> Result<()> {
+    //print all devices
+    for device in Device::list()? {
+        println!("Device: {:?}", device);
+    }
     let device = Device::list()?
         .into_iter()
         .find(|d| d.name == opt.device)
